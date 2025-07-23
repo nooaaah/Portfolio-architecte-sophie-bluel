@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
 ol, ul {
 	list-style: none;
@@ -125,6 +126,39 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+#divFilter{
+	display: flex;
+	width: 70%;
+	gap: 2%;
+	margin: 35px;
+	align-items: center;
+	margin-left: 20%;
+}
+
+
+
+#divFilter button{
+	appearance: none;
+	font-family: 'Syne';
+    font-size: 18px;
+	border: 1px solid #1D6154;
+	color: #1D6154;
+	background-color: #FFFEF8;
+	border-radius: 25px;
+	padding: 10px 23px;
+	white-space: nowrap
+}
+
+.button.active{
+	background-color: #1D6154;
+}
+#divFilter button.button.active{
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
+
 .gallery {
 	width: 100%;
 	display: grid;

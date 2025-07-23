@@ -23,6 +23,7 @@ npm start
 |email|password|
 | :---------------: | :---------------: |
 |sophie.bluel@test.tld|S0phie|
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1Mjc1NDE5NCwiZXhwIjoxNzUyODQwNTk0fQ.6paDyfoNyIITqZCneskekdlbLaUWuVjfIb3w5IjzbMg
 
 ## Accéder à Swagger
 
