@@ -1,5 +1,6 @@
 let conferences = []; 
 
+
 async function getWorks() {
   const url = "http://localhost:5678/api/works";
   try {
@@ -21,10 +22,6 @@ async function getWorks() {
   }
 }
 
-
-
-
-
 async function getCategories() {
   const url = "http://localhost:5678/api/categories";
   try {
@@ -36,7 +33,7 @@ async function getCategories() {
     const json = await response.json();
     console.log(json);
     for (let i = 0; i < json.length; i++) {
-        setFilter(json[i]);
+        setFilter(json[i].name, json[i].id);
     }
 
   } catch (error) {
@@ -53,7 +50,6 @@ function setFigure(data) {
 }
 
 
-
 const divFilter = document.createElement('div')
 divFilter.setAttribute('id', 'divFilter')
 
@@ -62,20 +58,29 @@ const gallery = document.querySelector('.gallery');
 
 portfolio.insertBefore(divFilter,gallery);
 
-const tous = document.createElement("button");
-    tous.setAttribute('class', 'button')
-    tous.dataset.filter = "all";
-    tous.innerHTML = `${"Tous"}`;
-    
-    document.querySelector("#divFilter").append(tous);
-
-function setFilter(data) {
+function setFilter(name, id) {
     const button = document.createElement("button");
+    button.setAttribute('id', 'filterButton')
     button.classList.add('button');
-    button.dataset.filter = data.id; 
-    button.textContent = data.name; 
+    button.dataset.filter = id; 
+    button.textContent = name; 
     document.querySelector("#divFilter").append(button);
 }
+
+  setFilter("tous","all")
+    const modify = document.createElement("button");
+    modify.setAttribute('class', 'modify-btn')
+    modify.setAttribute('id', 'modifyButton')
+    modify.innerHTML = `${"Modifer"}`;
+    document.querySelector("#divFilter").append(modify);
+
+
+
+
+
+
+
+
 
 const buttonList = document.querySelector('#divFilter');
 const filterButton = buttonList.querySelectorAll('.button');
@@ -83,19 +88,15 @@ const filterButton = buttonList.querySelectorAll('.button');
 
 divFilter.addEventListener('click', (e) => {
   if (e.target.classList.contains('button')) {
-    
     const buttons = divFilter.querySelectorAll('.button');
     buttons.forEach(btn => btn.classList.remove('active'));
     const filter = e.target.getAttribute('data-filter')
-    
-    
     e.target.classList.add('active');
-
     filterConf(filter)
   }
 });
 
-
+  
 
 function filterConf(confFilter) {
     conferences.forEach((conf) => {
@@ -108,6 +109,11 @@ function filterConf(confFilter) {
         }
     });
 }
+
+
+
+
+
 
 getWorks();
 getCategories();
