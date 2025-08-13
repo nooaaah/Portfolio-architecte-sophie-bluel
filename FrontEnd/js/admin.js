@@ -31,7 +31,7 @@ function setupAdminInterface() {
             localStorage.removeItem('authToken');
             window.location.reload();
         };
-    }
+    } 
 
     // Hide filters
     const divFilter = document.getElementById('divFilter');
@@ -46,11 +46,12 @@ function setupAdminInterface() {
         return;
     }
 
-    // Create modal if doesn't exist
-    let modal = document.getElementById('editModal');
-    if (!modal) {
-        modal = createEditModal();
-    }
+    // Get modal reference
+    const modal = document.getElementById('editModal');
+    
+
+    // Setup modal events
+    setupModalEvents(modal);
 
     // Setup click handler
     modifyButton.addEventListener('click', function() {
@@ -83,9 +84,7 @@ function cleanupAdminInterface() {
 
     // Show filters
     const divFilter = document.getElementById('divFilter');
-    if (divFilter) {
-        divFilter.style.display = 'flex';
-    }
+    
 }
 
 function createAuthBanner() {
@@ -141,58 +140,7 @@ function createModifyButton() {
     return button;
 }
 
-function createEditModal() {
-    const modal = document.createElement('div');
-    modal.id = 'editModal';
-    modal.className = 'modal';
-    modal.style.display = 'none';
 
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="closeDiv">
-            <span class="close">&times;</span>
-            </div>
-            <div id="modalGalleryView">
-                <h2>Galerie photo</h2>
-                <div class="modal-gallery" id="modalGallery"></div>
-                <div class="modal-footer">
-                    <button id="addPhotoBtn" class="modal-button">Ajouter une photo</button>
-                </div>
-            </div>
-            <div id="modalAddPhotoView" style="display:none;">
-                <div class="top-btn">
-                <button type="button" id="backBtn"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <h2>Ajout photo</h2>
-                <form id="uploadForm">
-                    <div class="form-group">
-                        <div class="image-upload" id="uploadContainer">
-                            <i class="fa-regular fa-image" id="uploadIcon"></i>
-                            <input type="file" id="imageInput" accept="image/*">
-                            <label for="imageInput">+ Ajouter photo</label>
-                            <p>jpg, png : 4mo max</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageTitle">Titre</label>
-                        <input type="text" id="imageTitle" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageCategory">Catégorie</label>
-                        <select id="imageCategory" required></select>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="submit-btn">Valider</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-    setupModalEvents(modal);
-    return modal;
-}
 
 function setupModalEvents(modal) {
     // Close button
