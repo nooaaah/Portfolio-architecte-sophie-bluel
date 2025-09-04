@@ -455,3 +455,5 @@ function validateForm() {
            titleInput.value.trim() !== '' && 
            categorySelect.value !== '';
 }
+
+

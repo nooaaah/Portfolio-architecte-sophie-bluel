@@ -1,4 +1,4 @@
-let conferences = []; 
+
 
 
 async function getWorks() {
@@ -10,12 +10,11 @@ async function getWorks() {
     }
 
     const json = await response.json();
-    console.log(json);
     for (let i = 0; i < json.length; i++) {
         setFigure(json[i]);
     }
      
-    conferences = document.querySelectorAll('.galleryFigure');
+    galleryFigures  = document.querySelectorAll('.galleryFigure');
 
   } catch (error) {
     console.error(error.message);
@@ -31,7 +30,6 @@ async function getCategories() {
     }
 
     const json = await response.json();
-    console.log(json);
     for (let i = 0; i < json.length; i++) {
         setFilter(json[i].name, json[i].id);
     }
@@ -76,12 +74,6 @@ function setFilter(name, id) {
 
 
 
-
-
-
-
-
-
 const buttonList = document.querySelector('#divFilter');
 const filterButton = buttonList.querySelectorAll('.button');
 
@@ -99,7 +91,7 @@ divFilter.addEventListener('click', (e) => {
   
 
 function filterConf(confFilter) {
-    conferences.forEach((conf) => {
+    galleryFigures.forEach((conf) => {
         const confCategory = conf.dataset.category;
         
         if (confFilter === 'all' || confFilter === confCategory) {
