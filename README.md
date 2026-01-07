@@ -1,6 +1,15 @@
 # Portfolio-architecte-sophie-bluel
+Ce projet a été réalisé dans le cadre du projet 3 de la formation Développeur Web d’OpenClassrooms.
+Ce repository contient le code du site portfolio de Sophie Bluel, une designer d’intérieur fictive.  
+L’objectif était de rendre le site dynamique en manipulant le DOM et en communiquant avec une API.
+Le projet inclut une interface d’administration permettant d’ajouter ou supprimer des projets après authentification.
 
-Code du projet 6 d'intégrateur web.
+## Technologies utilisées
+- HTML5
+- CSS3
+- JavaScript
+- API REST
+
 
 ## Architecture
 
